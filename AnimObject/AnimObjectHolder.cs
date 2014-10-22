@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 
 [System.Serializable]
+/* An AnimObjectHolder holds a series of AnimObjects. As a whole, an AnimObjectHolder
+ * represents a single animation--the individual AnimObjects are modular components of the animation */
 public class AnimObjectHolder {
 
     [SerializeField]
@@ -22,6 +24,7 @@ public class AnimObjectHolder {
         }
     }
 
+    /* Use these methods for setting the fields of an AnimObjectHolder */
     public void SetFields(AnimObject[] aoc) { SetFields(aoc, AnimObject.AnimationEnum.Default); }
     public void SetFields(AnimObject.AnimationEnum aEnum) { SetFields(new AnimObject[0], aEnum); }
     public void SetFields(AnimObject[] animObjectCollection, AnimObject.AnimationEnum aEnum)
@@ -35,6 +38,8 @@ public class AnimObjectHolder {
         animationEnum = aEnum;
     }
 
+
+    /* Creates and returns a new AnimObjectHolder */
     public static AnimObjectHolder CreateNewAnimObjectHolder()
     {
         return new AnimObjectHolder();
@@ -112,6 +117,9 @@ public class AnimObjectHolder {
         #endregion
 
         #region Reordering/Removing _animObjectCollection
+        
+        /* Moves the specified AnimObject up in the order of execution.
+         * Since we're working with animations, order matters */
         public void MoveAnimObjectUp(AnimObject ao)
         {
             for (int i = 0; i < _animObjectCollection.Count; i++)
@@ -127,6 +135,8 @@ public class AnimObjectHolder {
             }
         }
 
+        /* Moves the specified AnimObject down in the order of execution.
+         * Since we're working with animations, order matters! */
         public void MoveAnimObjectDown(AnimObject ao)
         {
             for (int i = 0; i < _animObjectCollection.Count; i++)
@@ -142,7 +152,7 @@ public class AnimObjectHolder {
             }
         }
 
-
+        /*Removes the specified AnimObject from the collection of AnimObjects, if found */
         public void RemoveAnimObject(AnimObject ao)
         {
             _animObjectCollection.Remove(ao);
