@@ -23,7 +23,7 @@ public abstract class AnimObject : ScriptableObject {
      * Note: Numerical lengths for these "directions" is in terms of HEX SPACES
      *  - Target: *SPECIAL* location = target; there is no length to set in this case
      *  - None: *SPECIAL* location = where object is; there is not length to set in this case
-     *  - TargetDirection: Direction of the target. If there's no target object, direction is E.
+     *  - TargetDirection: Direction of the target. If there's no target object, direction is NE.
      *  - NE, NW SE, SW, E, W: Compass Directions. */
     public enum AnimationDirection {Target, TargetDirection, N, S, NE, NW, SE, SW, None};
 
